@@ -50,9 +50,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v6
-      - uses: actions/setup-node@v1
+      #- uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '18'
+          check-latest: true
 
       - run: npm install
+      - run: npm install vite
       - run: npm run build
 
       - name: Install SSH Key
